@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Login | Task Tracker</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+  <main class="auth-page">
+
+    <section class="auth-card">
+
+      <div class="auth-header">
+
+        <p class="eyebrow">
+          TASK TRACKER
+        </p>
+
+        <h1>
+          Welcome back
+        </h1>
+
+        <p>
+          Log in to manage your tasks.
+        </p>
+
+      </div>
+
+
+      <form id="loginForm">
+
+        <div class="input-wrapper">
+
+          <label for="username">
+            Username
+          </label>
+
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter your username"
+            autocomplete="username"
+            required
+          >
+
+        </div>
+
+
+        <div class="input-wrapper">
+
+          <label for="password">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+          >
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="primary-button"
+        >
+          Login
+        </button>
+
+      </form>
+
+
+      <p
+        id="loginError"
+        class="form-error"
+      ></p>
+
+
+      <p class="auth-switch">
+
+        Don't have an account?
+
+        <a href="/register.html">
+          Create one
+        </a>
+
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    const loginForm =
+      document.getElementById('loginForm');
+
+    const loginError =
+      document.getElementById('loginError');
+
+
+    loginForm.addEventListener(
+      'submit',
+      async event => {
+
+        event.preventDefault();
+
+
+        const username =
+          document
+            .getElementById('username')
+            .value
+            .trim();
+
+
+        const password =
+          document
+            .getElementById('password')
+            .value;
+
+
+        loginError.textContent = '';
+
+
+        try {
+
+          const response =
+            await fetch('/login', {
+
+              method: 'POST',
+
+              headers: {
+                'Content-Type':
+                  'application/json'
+              },
+
+              body: JSON.stringify({
+                username,
+                password
+              })
+
+            });
+
+
+          const data =
+            await response.json();
+
+
+          if (!response.ok) {
+
+            loginError.textContent =
+              data.error ||
+              'Login failed.';
+
+            return;
+
+          }
+
+
+          window.location.href = '/';
+
+
+        } catch (error) {
+
+          console.error(error);
+
+          loginError.textContent =
+            'Unable to connect to the server.';
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+
+</html>

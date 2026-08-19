@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Task Tracker</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+  <main class="app">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="app-header">
+
+      <div>
+
+        <p class="eyebrow">
+          MY WORKSPACE
+        </p>
+
+        <h1>
+          Task Tracker
+        </h1>
+
+        <p class="subtitle">
+          Organize your work and stay productive.
+        </p>
+
+      </div>
+
+
+      <div class="user-controls">
+
+        <span id="usernameDisplay">
+          User
+        </span>
+
+        <button
+          id="logoutButton"
+          class="logout-button"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- =========================
+         ADD TASK
+    ========================== -->
+
+    <section class="add-task-card">
+
+      <form id="taskForm">
+
+        <div class="input-wrapper">
+
+          <label for="taskTitle">
+            New task
+          </label>
+
+          <input
+            type="text"
+            id="taskTitle"
+            name="title"
+            placeholder="What needs to be done?"
+            autocomplete="off"
+            required
+          >
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="add-button"
+        >
+          Add Task
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- =========================
+         ACTIVE TASKS
+    ========================== -->
+
+    <section class="task-section">
+
+      <div class="section-header">
+
+        <div>
+
+          <h2>
+            Active Tasks
+          </h2>
+
+          <p>
+            Tasks you still need to complete.
+          </p>
+
+        </div>
+
+
+        <span
+          id="uncompletedCount"
+          class="count"
+        >
+          0
+        </span>
+
+      </div>
+
+
+      <div
+        id="uncompletedList"
+        class="task-list"
+      ></div>
+
+    </section>
+
+
+    <!-- =========================
+         COMPLETED TASKS
+    ========================== -->
+
+    <section class="task-section completed-section">
+
+      <div class="section-header">
+
+        <div>
+
+          <h2>
+            Completed
+          </h2>
+
+          <p>
+            Tasks you've finished.
+          </p>
+
+        </div>
+
+
+        <span
+          id="completedCount"
+          class="count"
+        >
+          0
+        </span>
+
+      </div>
+
+
+      <div
+        id="completedList"
+        class="task-list"
+      ></div>
+
+    </section>
+
+
+    <!-- =========================
+         STATUS MESSAGE
+    ========================== -->
+
+    <div
+      id="statusMessage"
+      class="status-message"
+    ></div>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

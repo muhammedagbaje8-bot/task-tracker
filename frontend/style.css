@@ -1,0 +1,999 @@
+/* ==================================================
+   RESET
+================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ==================================================
+   BODY
+================================================== */
+
+body {
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #f5f7fb;
+
+  color: #172033;
+
+  min-height: 100vh;
+
+}
+
+
+/* ==================================================
+   APP
+================================================== */
+
+.app {
+
+  width: 92%;
+
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  padding: 60px 0 80px;
+
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.app-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 20px;
+
+  margin-bottom: 35px;
+
+}
+
+
+.eyebrow {
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  color: #64748b;
+
+  margin-bottom: 8px;
+
+}
+
+
+.app-header h1 {
+
+  font-size: 42px;
+
+  line-height: 1.1;
+
+  margin-bottom: 10px;
+
+}
+
+
+.subtitle {
+
+  color: #64748b;
+
+  font-size: 16px;
+
+}
+
+
+/* ==================================================
+   USER CONTROLS
+================================================== */
+
+.user-controls {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+}
+
+
+#usernameDisplay {
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+}
+
+
+.logout-button {
+
+  border: 1px solid #e2e8f0;
+
+  background: white;
+
+  color: #475569;
+
+  padding: 9px 14px;
+
+  border-radius: 7px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+}
+
+
+.logout-button:hover {
+
+  background: #f8fafc;
+
+  color: #dc2626;
+
+}
+
+
+/* ==================================================
+   ADD TASK CARD
+================================================== */
+
+.add-task-card {
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  padding: 22px;
+
+  margin-bottom: 40px;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.05);
+
+}
+
+
+#taskForm {
+
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 15px;
+
+}
+
+
+.input-wrapper {
+
+  flex: 1;
+
+}
+
+
+.input-wrapper label {
+
+  display: block;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  margin-bottom: 7px;
+
+  color: #475569;
+
+}
+
+
+#taskTitle {
+
+  width: 100%;
+
+  height: 46px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d6dbe4;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 15px;
+
+  color: #172033;
+
+  background: #fff;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+
+}
+
+
+#taskTitle:focus {
+
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
+
+}
+
+
+.add-button {
+
+  height: 46px;
+
+  padding: 0 22px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+}
+
+
+.add-button:hover {
+
+  background: #1d4ed8;
+
+}
+
+
+/* ==================================================
+   TASK SECTIONS
+================================================== */
+
+.task-section {
+
+  margin-bottom: 40px;
+
+}
+
+
+.section-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 15px;
+
+}
+
+
+.section-header h2 {
+
+  font-size: 21px;
+
+  margin-bottom: 4px;
+
+}
+
+
+.section-header p {
+
+  font-size: 13px;
+
+  color: #64748b;
+
+}
+
+
+.count {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 30px;
+
+  height: 30px;
+
+  padding: 0 9px;
+
+  border-radius: 50px;
+
+  background: #e8eefc;
+
+  color: #2563eb;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+}
+
+
+/* ==================================================
+   TASK LIST
+================================================== */
+
+.task-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+}
+
+
+/* ==================================================
+   TASK CARD
+================================================== */
+
+.task-card {
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+
+  padding: 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+
+}
+
+
+.task-card:hover {
+
+  border-color: #cbd5e1;
+
+  box-shadow:
+    0 5px 15px rgba(15, 23, 42, 0.05);
+
+}
+
+
+.task-content {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+
+.task-title {
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  word-break: break-word;
+
+}
+
+
+/* ==================================================
+   COMPLETED TASK
+================================================== */
+
+.task-card.completed {
+
+  background: #fafafa;
+
+}
+
+
+.task-card.completed .task-title {
+
+  color: #94a3b8;
+
+  text-decoration: line-through;
+
+}
+
+
+/* ==================================================
+   TASK ACTIONS
+================================================== */
+
+.task-actions {
+
+  display: flex;
+
+  gap: 8px;
+
+  flex-shrink: 0;
+
+}
+
+
+.task-actions button {
+
+  border: none;
+
+  border-radius: 7px;
+
+  padding: 8px 11px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+}
+
+
+/* Complete */
+
+.complete-button {
+
+  background: #dcfce7;
+
+  color: #15803d;
+
+}
+
+
+.complete-button:hover {
+
+  background: #bbf7d0;
+
+}
+
+
+/* Mark active */
+
+.undo-button {
+
+  background: #f1f5f9;
+
+  color: #475569;
+
+}
+
+
+.undo-button:hover {
+
+  background: #e2e8f0;
+
+}
+
+
+/* Edit */
+
+.edit-button {
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+}
+
+
+.edit-button:hover {
+
+  background: #dbeafe;
+
+}
+
+
+/* Delete */
+
+.delete-button {
+
+  background: #fef2f2;
+
+  color: #dc2626;
+
+}
+
+
+.delete-button:hover {
+
+  background: #fee2e2;
+
+}
+
+
+/* ==================================================
+   EDIT MODE
+================================================== */
+
+.edit-container {
+
+  display: flex;
+
+  width: 100%;
+
+  gap: 10px;
+
+}
+
+
+.edit-input {
+
+  flex: 1;
+
+  height: 40px;
+
+  padding: 0 12px;
+
+  border: 1px solid #2563eb;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  font-size: 14px;
+
+}
+
+
+.save-button {
+
+  background: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 7px;
+
+  padding: 0 14px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+}
+
+
+.cancel-button {
+
+  background: #f1f5f9;
+
+  color: #475569;
+
+  border: none;
+
+  border-radius: 7px;
+
+  padding: 0 14px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+}
+
+
+.save-button:hover {
+
+  background: #1d4ed8;
+
+}
+
+
+.cancel-button:hover {
+
+  background: #e2e8f0;
+
+}
+
+
+/* ==================================================
+   EMPTY STATE
+================================================== */
+
+.empty-state {
+
+  padding: 25px;
+
+  background: white;
+
+  border: 1px dashed #d6dbe4;
+
+  border-radius: 10px;
+
+  text-align: center;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+
+}
+
+
+/* ==================================================
+   STATUS MESSAGE
+================================================== */
+
+.status-message {
+
+  position: fixed;
+
+  bottom: 25px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  padding: 11px 18px;
+
+  background: #172033;
+
+  color: white;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: opacity 0.2s;
+
+}
+
+
+.status-message.show {
+
+  opacity: 1;
+
+}
+
+
+/* ==================================================
+   AUTH PAGES
+================================================== */
+
+.auth-page {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+}
+
+
+.auth-card {
+
+  width: 100%;
+
+  max-width: 420px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  padding: 35px;
+
+  box-shadow:
+    0 15px 40px rgba(15, 23, 42, 0.08);
+
+}
+
+
+.auth-header {
+
+  margin-bottom: 30px;
+
+}
+
+
+.auth-header h1 {
+
+  font-size: 30px;
+
+  margin-bottom: 8px;
+
+}
+
+
+.auth-header > p:last-child {
+
+  color: #64748b;
+
+  font-size: 14px;
+
+}
+
+
+.auth-card form {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+
+}
+
+
+.auth-card .input-wrapper {
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+.auth-card label {
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #475569;
+
+  margin-bottom: 7px;
+
+}
+
+
+.auth-card input {
+
+  width: 100%;
+
+  height: 46px;
+
+  padding: 0 13px;
+
+  border: 1px solid #d6dbe4;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 15px;
+
+}
+
+
+.auth-card input:focus {
+
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
+
+}
+
+
+.primary-button {
+
+  height: 46px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+}
+
+
+.primary-button:hover {
+
+  background: #1d4ed8;
+
+}
+
+
+.form-error {
+
+  min-height: 20px;
+
+  margin-top: 15px;
+
+  color: #dc2626;
+
+  font-size: 13px;
+
+  text-align: center;
+
+}
+
+
+.auth-switch {
+
+  margin-top: 20px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #e5e7eb;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+}
+
+
+.auth-switch a {
+
+  color: #2563eb;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+}
+
+
+.auth-switch a:hover {
+
+  text-decoration: underline;
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 650px) {
+
+  .app {
+
+    width: 94%;
+
+    padding-top: 35px;
+
+  }
+
+
+  .app-header {
+
+    flex-direction: column;
+
+  }
+
+
+  .app-header h1 {
+
+    font-size: 34px;
+
+  }
+
+
+  .user-controls {
+
+    width: 100%;
+
+    justify-content: space-between;
+
+  }
+
+
+  #taskForm {
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+  }
+
+
+  .add-button {
+
+    width: 100%;
+
+  }
+
+
+  .task-card {
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+  }
+
+
+  .task-actions {
+
+    width: 100%;
+
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+
+  }
+
+
+  .edit-container {
+
+    flex-wrap: wrap;
+
+  }
+
+
+  .edit-input {
+
+    flex-basis: 100%;
+
+  }
+
+}
+
+
+@media (max-width: 450px) {
+
+  .auth-card {
+
+    padding: 25px 20px;
+
+  }
+
+}

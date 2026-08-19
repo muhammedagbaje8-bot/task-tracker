@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Create Account | Task Tracker</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+  <main class="auth-page">
+
+    <section class="auth-card">
+
+      <div class="auth-header">
+
+        <p class="eyebrow">
+          TASK TRACKER
+        </p>
+
+        <h1>
+          Create account
+        </h1>
+
+        <p>
+          Create your own account to get started.
+        </p>
+
+      </div>
+
+
+      <form id="registerForm">
+
+        <div class="input-wrapper">
+
+          <label for="username">
+            Username
+          </label>
+
+          <input
+            type="text"
+            id="username"
+            placeholder="Choose a username"
+            autocomplete="username"
+            required
+          >
+
+        </div>
+
+
+        <div class="input-wrapper">
+
+          <label for="password">
+            Password
+          </label>
+
+          <input
+            type="password"
+            id="password"
+            placeholder="At least 4 characters"
+            autocomplete="new-password"
+            required
+          >
+
+        </div>
+
+
+        <div class="input-wrapper">
+
+          <label for="confirmPassword">
+            Confirm Password
+          </label>
+
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Enter your password again"
+            autocomplete="new-password"
+            required
+          >
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="primary-button"
+        >
+          Create Account
+        </button>
+
+      </form>
+
+
+      <p
+        id="registerError"
+        class="form-error"
+      ></p>
+
+
+      <p class="auth-switch">
+
+        Already have an account?
+
+        <a href="/login.html">
+          Login
+        </a>
+
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    const registerForm =
+      document.getElementById(
+        'registerForm'
+      );
+
+    const registerError =
+      document.getElementById(
+        'registerError'
+      );
+
+
+    registerForm.addEventListener(
+      'submit',
+      async event => {
+
+        event.preventDefault();
+
+
+        const username =
+          document
+            .getElementById('username')
+            .value
+            .trim();
+
+
+        const password =
+          document
+            .getElementById('password')
+            .value;
+
+
+        const confirmPassword =
+          document
+            .getElementById('confirmPassword')
+            .value;
+
+
+        registerError.textContent = '';
+
+
+        // Check passwords
+
+        if (
+          password !==
+          confirmPassword
+        ) {
+
+          registerError.textContent =
+            'Passwords do not match.';
+
+          return;
+
+        }
+
+
+        if (password.length < 4) {
+
+          registerError.textContent =
+            'Password must be at least 4 characters.';
+
+          return;
+
+        }
+
+
+        try {
+
+          const response =
+            await fetch('/register', {
+
+              method: 'POST',
+
+              headers: {
+                'Content-Type':
+                  'application/json'
+              },
+
+              body: JSON.stringify({
+                username,
+                password
+              })
+
+            });
+
+
+          const data =
+            await response.json();
+
+
+          if (!response.ok) {
+
+            registerError.textContent =
+              data.error ||
+              'Unable to create account.';
+
+            return;
+
+          }
+
+
+          // Registration automatically logs
+          // the user in.
+
+          window.location.href = '/';
+
+
+        } catch (error) {
+
+          console.error(error);
+
+          registerError.textContent =
+            'Unable to connect to the server.';
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+
+</html>
