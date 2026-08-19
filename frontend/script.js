@@ -78,7 +78,7 @@ async function checkLogin() {
   try {
 
     const response =
-      await fetch('/auth/status');
+      await fetch('https://task-tracker-backend-us3a.onrender.com/auth/status');
 
 
     const data =
@@ -129,7 +129,7 @@ async function loadTasks() {
   try {
 
     const response =
-      await fetch('/tasks');
+      await fetch('https://task-tracker-backend-us3a.onrender.com/tasks');
 
 
     if (response.status === 401) {
@@ -446,7 +446,7 @@ taskForm.addEventListener(
     try {
 
       const response =
-        await fetch('/tasks', {
+        await fetch('https://task-tracker-backend-us3a.onrender.com/tasks', {
 
           method: 'POST',
 
@@ -527,7 +527,7 @@ async function toggleTask(task) {
 
     const response =
       await fetch(
-        `/tasks/${task.id}`,
+        `https://task-tracker-backend-us3a.onrender.com/tasks/${task.id}`,
         {
 
           method: 'PATCH',
@@ -751,7 +751,7 @@ async function updateTask(
 
     const response =
       await fetch(
-        `/tasks/${id}`,
+        `https://task-tracker-backend-us3a.onrender.com/tasks/${id}`,
         {
 
           method: 'PATCH',
@@ -841,7 +841,7 @@ async function deleteTask(id) {
 
     const response =
       await fetch(
-        `/tasks/${id}`,
+        `https://task-tracker-backend-us3a.onrender.com/tasks/${id}`,
         {
           method: 'DELETE'
         }
@@ -908,7 +908,7 @@ logoutButton.addEventListener(
     try {
 
       const response =
-        await fetch('/logout', {
+        await fetch('https://task-tracker-backend-us3a.onrender.com/logout', {
           method: 'POST'
         });
 
