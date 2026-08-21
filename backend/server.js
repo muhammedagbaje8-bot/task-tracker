@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const Database = require('better-sqlite3');
+const cors = require('cors')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,16 +14,26 @@ const db = new Database('tasktracker.db');
 // MIDDLEWARE    
 // ==================================================
 
+
+app.set('trust proxy', 1);
+
+app.use(cors({
+  origin: 'https://task-tracker-frontend-4wqo.onrender.com',
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.use(
   session({
-    secret: 'task-tracker-session-secret',
+    secret: '5a815d0db0607970ecd661e8360cba21e7d23cdad482f55ddae9e7b14d36d4ab405a110488866ae0d5ec03808e9d04e1',
     resave: false,
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60,
-      httpOnly: true
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none'
     }
   })
 );

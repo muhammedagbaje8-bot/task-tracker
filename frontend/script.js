@@ -78,7 +78,9 @@ async function checkLogin() {
   try {
 
     const response =
-      await fetch('https://task-tracker-backend-us3a.onrender.com/auth/status');
+      await fetch('https://task-tracker-backend-us3a.onrender.com/auth/status', {
+        credentials: 'include'
+      });
 
 
     const data =
@@ -129,7 +131,9 @@ async function loadTasks() {
   try {
 
     const response =
-      await fetch('https://task-tracker-backend-us3a.onrender.com/tasks');
+      await fetch('https://task-tracker-backend-us3a.onrender.com/tasks', {
+        credentials: 'include'
+      });
 
 
     if (response.status === 401) {
@@ -449,6 +453,7 @@ taskForm.addEventListener(
         await fetch('https://task-tracker-backend-us3a.onrender.com/tasks', {
 
           method: 'POST',
+          credentials: 'include',
 
           headers: {
             'Content-Type':
@@ -531,6 +536,7 @@ async function toggleTask(task) {
         {
 
           method: 'PATCH',
+          credentials: 'include',
 
           headers: {
             'Content-Type':
@@ -755,6 +761,7 @@ async function updateTask(
         {
 
           method: 'PATCH',
+          credentials: 'include',
 
           headers: {
             'Content-Type':
@@ -843,7 +850,8 @@ async function deleteTask(id) {
       await fetch(
         `https://task-tracker-backend-us3a.onrender.com/tasks/${id}`,
         {
-          method: 'DELETE'
+          method: 'DELETE',
+          credentials: 'include',
         }
       );
 
@@ -909,7 +917,8 @@ logoutButton.addEventListener(
 
       const response =
         await fetch('https://task-tracker-backend-us3a.onrender.com/logout', {
-          method: 'POST'
+          method: 'POST',
+          credentials: 'include',
         });
 
 
